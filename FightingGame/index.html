@@ -1,0 +1,42 @@
+<!-- standard template for a canvas game -->
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fighting game</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Fighting game</h1>
+    <div style="position: relative">
+      <div class="upperBoard">
+        <!-- player health -->
+        <div class="Hbar player">
+          <div class="extraMUUR"></div>
+          <div class="actualHbar" id="playerHealth"></div>
+        </div>
+        <!-- timer -->
+        <div class="Timer">
+          <div class="innerTimer">
+            <p class="time" id="Seconds">10</p>
+          </div>
+        </div>
+        <!-- enemy health -->
+
+        <div class="Hbar enemy">
+          <div class="extraMUUR"></div>
+          <div class="actualHbar" id="enemyHealth"></div>
+        </div>
+      </div>
+<div id="endText" class="text"><p id="FinalMessage">Hello worlds!</p></div>
+      <div>
+        <canvas id="canv" width="" height=""></canvas>
+      </div>
+    </div>
+    <!-- <span><p id="len">text</p></span>
+    <span><p id="len">More Text</p></span> -->
+  </body>
+  <script defer src="fg.js"></script>
+</html>

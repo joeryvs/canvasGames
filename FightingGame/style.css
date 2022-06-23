@@ -1,0 +1,108 @@
+body {
+  color: blue;
+  background-color: yellow;
+  display: flex;
+  align-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+
+canvas {
+  background-color: #fff;
+  border: 2mm;
+  border-color: rebeccapurple;
+  border-style: double;
+}
+
+p {
+  font: optional;
+  font-size: xx-large;
+  font-family: fantasy;
+  color: brown;
+}
+
+p#Seconds.time {
+  color: yellow;
+  margin: 0px;
+  max-width: 90px;
+  max-height: 90px;
+  min-width: 0px;
+  min-height: 0px;
+}
+
+h1 {
+  margin-bottom: 3px;
+  margin-top: 0px;
+}
+
+div.Hbar {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  background-color: rgba(7, 66, 244, 0.5);
+}
+div.actualHbar {
+  height: 50px;
+  width: 100%;
+  background-color: rgba(10, 239, 50, 0.7);
+}
+div#enemyHealth {
+  /* background-color: rgba(234, 242, 17, 0.371); */
+  color: yellowgreen;
+}
+div.player {
+  display: flex;
+  justify-content: flex-end;
+}
+div#playerHealth {
+  /* background-color: rgb(245, 255, 12, 0.8); */
+  color: yellowgreen;
+}
+
+div.Timer {
+  background-color: rgba(255, 0, 0, 0.59);
+  height: 100px;
+  width: 100px;
+  display: flex;
+  position: relative;
+}
+
+div.upperBoard {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+
+div.extraMUUR {
+  position: absolute;
+  background-color: rgba(0, 0, 255, 0.3);
+  top: 0;
+
+  bottom: 0;
+}
+
+div.innerTimer {
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  justify-content: space-evenly;
+}
+
+div#endText.text{
+  color: #fff;
+  background-color: transparent;
+  position: absolute;
+  /* display: flex; */
+  display: none;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}

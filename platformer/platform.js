@@ -17,6 +17,7 @@ class Player {
     this.height = height;
     this.color = "#f0f";
     this.isGrounded = false;
+    this.isFacingRight = true;
   }
 
   DrawPlayer() {
@@ -59,20 +60,47 @@ class Platform {
   }
 }
 const man = new Player({ pos: { x: 50, y: 10 }, width: 50, height: 70 });
-const ppp1 = new Platform({ posx: 200, posy: 200 });
+
+const platforms = [
+  new Platform({ posx: 200, posy: 200 }),
+  new Platform({ posx: 300, posy: 100 }),
+  new Platform({ posx: 6000, posy: 280 }),
+];
 function main() {
   console.log("succes");
   animate();
 }
 
 function animate() {
-    requestAnimationFrame(animate);
+  requestAnimationFrame(animate);
   can.clearRect(0, 0, canvv.width, canvv.height);
   man.update();
-  ppp1.DrawPlatform();
-  if (man.pos.y + man.height <= ppp1.posx) {
-    man.vel.vy = 0;
+  // draw platforms
+  platforms.forEach((Platform) => {
+    Platform.DrawPlatform();
+  });
+
+  // scroll properties detection
+  if (man.pos.x <= 10 || man.pos.x >= 300) {
+    platforms.forEach((Platform) => {
+      Platform.posx -= man.vel.vx;
+    });
+    if (man.pos.x <= 10) man.pos.x = 10;
+    if (man.pos.x >= 300) man.pos.x = 300;
   }
+
+  // collision detection
+  platforms.forEach((Platform) => {
+    if (
+      man.pos.y + man.height <= Platform.posy &&
+      man.pos.y + man.height + man.vel.vy >= Platform.posy &&
+      man.pos.x + man.width >= Platform.posx &&
+      man.pos.x <= Platform.posx + Platform.width
+    ) {
+      man.vel.vy = 0;
+      man.isGrounded = true;
+    }
+  });
 }
 
 setInterval(() => {

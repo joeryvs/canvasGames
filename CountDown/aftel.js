@@ -2,7 +2,7 @@ console.log("works");
 
 const p = document.querySelector("p");
 console.log(p);
-const begin = Date.UTC(2022, 7, 1);
+const begin = Date.UTC(2022, 8, 1);
 console.log(begin);
 timeShow();
 setInterval(timeShow, 100);

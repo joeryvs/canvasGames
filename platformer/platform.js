@@ -104,14 +104,13 @@ function animate() {
 }
 
 setInterval(() => {
-  console.log(keysss);
+  console.table(keysss);
 }, 5000);
 const keysss = {
   a: { pressed: false },
   s: { pressed: false },
   d: { pressed: false },
   w: { pressed: false },
-  q: { pressed: false },
 };
 
 window.addEventListener("keypress", (ev) => {
@@ -125,7 +124,6 @@ function keyPress(button) {
     case "a":
     case "A":
       keysss.a.pressed = true;
-
       break;
     case "s":
     case "S":
@@ -134,7 +132,6 @@ function keyPress(button) {
     case "d":
     case "D":
       keysss.d.pressed = true;
-
       break;
     case "w":
     case "W":
@@ -145,6 +142,8 @@ function keyPress(button) {
       keysss.w.pressed = true;
       break;
     default:
+      keysss[button.toLowerCase()] = {};
+      keysss[button.toLowerCase()].pressed = true;
       break;
   }
 }
@@ -168,6 +167,7 @@ function keyUP(button) {
       keysss.w.pressed = false;
       break;
     default:
+      keysss[button.toLowerCase()].pressed = false;
       break;
   }
 }

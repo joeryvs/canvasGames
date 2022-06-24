@@ -1,0 +1,21 @@
+p.letters{
+    color: rgb(0, 0, 255);
+    /* margin: 0%; */
+    margin: 4mm;
+    /* color: transparent; */
+}
+
+p.letters:hover{
+    color: transparent;
+    background-color: transparent;
+}
+span{
+    display: flex;
+
+    position: fixed;
+    top: 40%;
+    left: 20%;
+    right: 20%;
+    align-items: stretch;
+    justify-content: center;
+}

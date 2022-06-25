@@ -6,13 +6,11 @@ const width = canvas.width;
 const height = canvas.height;
 const gravity = 0.3;
 
-
-
-const cubes = [new Cube(), new Cube(), new Cube(), new Cube()];
+const orbs = [new Orb({}), new Orb({}), new Orb({}), new Orb({})];
 
 const add = setInterval(() => {
-  console.count("cube");
-  cubes.push(new Cube());
+  console.count("orb");
+  orbs.push(new Orb({}));
 }, 1000);
 setTimeout(() => {
   console.log("no more");
@@ -22,13 +20,30 @@ function main() {
   console.log("action imported");
   animate();
 }
+const cubes = [new Cube({}), new Cube({}), new Cube({}), new Cube({})];
+
+const addCube = setInterval(() => {
+  console.count("cube");
+  cubes.push(new Cube({ width: 40, height: 40 }));
+}, 1000);
+setTimeout(() => {
+  console.log("no more");
+  clearInterval(addCube);
+}, 60 * 1000);
+function main() {
+  console.log("action imported");
+  animate();
+}
 
 function animate() {
   requestAnimationFrame(animate);
   art.clearRect(0, 0, width, height);
-
-  cubes.forEach((cube) => {
-    cube.update();
+  art.lineWidth = 3;
+  orbs.forEach((objectt) => {
+    objectt.update();
   });
-  cancelAnimationFrame(4000)
+  cubes.forEach((objectt) => {
+    objectt.update();
+  });
+  // cancelAnimationFrame(900);
 }

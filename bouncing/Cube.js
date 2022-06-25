@@ -1,11 +1,11 @@
 console.log("cube imported");
 class Cube {
-  constructor() {
-    this.width = 40;
-    this.height = 40;
+  constructor({width ,height}) {
+    this.width = (width===undefined) ? 40:width;
+    this.height =( height===undefined)?40:height
     this.pos = {
-      x: random.range(width - this.width),
-      y: random.range(height - this.height),
+      x: random.range(canvas.width - this.width),
+      y: random.range(canvas.height - this.height),
     };
     this.vel = { x: random.PosOrMinusRange(5), y: random.PosOrMinusRange(2) };
     this.color = random.rFull();

@@ -42,16 +42,16 @@ class random {
   }
 
   static rShort() {
-    return `#${random.rOneNumber()}${random.rOneNumber()}${random.rOneNumber()}`;
+    return `#${random.rHex3}`;
   }
   static rFull() {
-    return `#${random.rOneNumber()}${random.rOneNumber()}${random.rOneNumber()}${random.rOneNumber()}${random.rOneNumber()}${random.rOneNumber()}`;
+    return `#${random.rHexAny(6)}`;
   }
 
   static rN(max = 200, min = 0) {
     return Math.floor(Math.random() * max + min);
   }
-  static choide(array) {
+  static choice(array) {
     return array[Math.floor(Math.random() * array.length)];
   }
   static range(minVal) {
@@ -62,6 +62,6 @@ class random {
     return (Math.random() - 0.5) * minVal * 2;
   }
   static randomBool(){
-    return Math.round(Math.random())
+    return Math.round(Math.random()) == 1
   }
 }

@@ -12,8 +12,14 @@ class Orb {
     this.width = 2 * this.radius;
     this.height = 2 * this.radius;
     this.pos = {
-      x: random.range(canvas.width - this.radius * 2) + this.radius,
-      y: random.range(canvas.height - this.radius * 2) + this.radius,
+      x:
+        x === undefined
+          ? random.rN(canvas.width - this.radius, this.radius)
+          : x,
+      y:
+        y === undefined
+          ? random.rN(canvas.height - this.radius, this.radius)
+          : y,
     };
     this.vel = { x: random.PosOrMinusRange(5), y: random.PosOrMinusRange(2) };
     this.color = random.rFull();
@@ -49,8 +55,8 @@ class Cube {
     this.width = width === undefined ? 40 : width;
     this.height = height === undefined ? 40 : height;
     this.pos = {
-      x: x === undefined ? 300 : x,
-      y: y === undefined ? 300 : y,
+      x: x === undefined ? random.rN(0, canvas.width - this.width) : x,
+      y: y === undefined ? random.rN(0, canvas.height - this.height) : y,
     };
     this.vel = { x: random.PosOrMinusRange(5), y: random.PosOrMinusRange(2) };
     this.color = random.rFull();
@@ -85,8 +91,8 @@ const moveble = random.randomBool()
   : new Cube({ height: 250, width: 200 });
 // const moveble = new Orb({ radius: 50 });
 const unmoveble = random.randomBool()
-  ? new Cube({ x: 400, y: 400, width: 200, height: 200 })
-  : new Orb({ radius: 50, x: 400, y: 400 });
+  ? new Orb({ radius: 50 })
+  : new Cube({ width: 200, height: 200 });
 
 canvas.addEventListener("mousemove", (ev) => {
   Mousemove(ev);
@@ -124,12 +130,14 @@ function canvasResize() {
 }
 
 function isTouchingCubes({ cube1 = moveble, cube2 = unmoveble }) {
-  return (
-    cube1.pos.x + cube1.width >= cube2.pos.x &&
-    cube1.pos.x <= cube2.pos.x + cube2.width &&
-    cube1.pos.y + cube1.height >= cube2.pos.y &&
-    cube1.pos.y <= cube2.pos.y + cube2.height
-  );
+  if (cube1.type() === Cube && cube2.type() === Cube) {
+    return (
+      cube1.pos.x + cube1.width >= cube2.pos.x &&
+      cube1.pos.x <= cube2.pos.x + cube2.width &&
+      cube1.pos.y + cube1.height >= cube2.pos.y &&
+      cube1.pos.y <= cube2.pos.y + cube2.height
+    );
+  }
 }
 
 function isTouchingOrbs({ Orb1 = moveble, cirkle = unmoveble }) {

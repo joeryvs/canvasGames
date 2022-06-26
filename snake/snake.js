@@ -107,11 +107,7 @@ class snake {
         this.width - 2 * sp,
         this.height - 2 * sp
       );
-      if (
-        this.pos.px === tailXcor &&
-        this.pos.py === tailYcor &&
-        this.collisionCheck
-      ) {
+      if (this.pos.px === tailXcor && this.pos.py === tailYcor) {
         console.log(this.pos, element);
         console.log(this.pos == element, this.pos === element);
         this.objectLengt = 5;
@@ -141,9 +137,7 @@ appel.newPos();
 function main() {
   console.log("succes");
   Draw();
-  addEventListener("keydown", (test) => {
-    KeyPress(test.key);
-  });
+  addEventListener("keydown", (test) => KeyPress(test.key));
   return;
 }
 

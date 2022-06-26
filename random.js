@@ -42,14 +42,17 @@ class random {
   }
 
   static rShort() {
-    return `#${random.rHex3}`;
+    return `#${random.rHex3()}`;
   }
   static rFull() {
     return `#${random.rHexAny(6)}`;
   }
 
-  static rN(max = 200, min = 0) {
-    return Math.floor(Math.random() * max + min);
+  static rN(num1 = 0, num2 = 0) {
+    if (num1 > num2) {
+      return Math.floor(Math.random() * (num1 - num2) + num2);
+    }
+    return Math.floor(Math.random() * (num2 - num1) + num1);
   }
   static choice(array) {
     return array[Math.floor(Math.random() * array.length)];
@@ -61,7 +64,7 @@ class random {
   static PosOrMinusRange(minVal) {
     return (Math.random() - 0.5) * minVal * 2;
   }
-  static randomBool(){
-    return Math.round(Math.random()) == 1
+  static randomBool() {
+    return Math.round(Math.random()) == 1;
   }
 }

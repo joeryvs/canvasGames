@@ -22,10 +22,10 @@ addEventListener("keypress", (x) => {
 
 addEventListener("online", (ev) => console.log(ev));
 // addEventListener("afterprint", (ev) => console.log(ev));
-addEventListener("auxclick", (ev) => console.log(ev));
+addEventListener("auxclick", (ev) => thisPage(ev));
 addEventListener("click", (ev) => console.log(ev));
 addEventListener("close", (ev) => open("https://google.com"));
-addEventListener("dblclick", (ev) => console.log(ev));
+addEventListener("dblclick", (ev) => thisPage(ev));
 // addEventListener("mousedown", (ev) => console.log(ev));
 // addEventListener("mouseenter", (ev) => console.log(ev));
 // addEventListener("mouseleave", (ev) => console.log(ev));
@@ -47,10 +47,12 @@ h2.addEventListener("click", (ev) => {
   console.log(ev);
   open("/chrome/newtab");
 });
-window.addEventListener("pagehide", (ev) => {
+window.addEventListener("pagehide", (ev) => thisPage(ev));
+
+function thisPage(ev) {
   console.table(ev);
-  open("https://google.com");
-});
+  open("/canvasGames/event");
+}
 
 function h4Change({ xCor, yCor }) {
   const str = `     ${xCor},  ${yCor}      `;

@@ -90,6 +90,7 @@ const moveble = random.randomBool() ? new Orb({}) : new Cube({});
 // const moveble = new Orb({ radius: 50 });
 const unmoveble = random.randomBool() ? new Orb({}) : new Cube({});
 
+canvas.addEventListener("dblclick", ()=> {canvas.classList.toggle("noCursor")})
 canvas.addEventListener("mousemove", ({ offsetX, offsetY }) => {
   Mousemove(offsetX, offsetY);
 });
@@ -102,7 +103,19 @@ function Mousemove(ofX, ofY) {
     moveble.pos.x = ofX;
     moveble.pos.y = ofY;
   }
+  setTimeout(() => {
+    if (unmoveble.type() == Cube) {
+      unmoveble.pos.x = ofX - 0.5 * unmoveble.width;
+      unmoveble.pos.y = ofY - 0.5 * unmoveble.height;
+    } else if (unmoveble.type() == Orb) {
+      unmoveble.pos.x = ofX;
+      unmoveble.pos.y = ofY;
+    }
+    
+  }, 700);
 }
+
+
 
 function animate() {
   requestAnimationFrame(animate);

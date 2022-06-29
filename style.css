@@ -26,3 +26,6 @@ p {
 .noCursor{
   cursor: none;
 }
+.noMarg{
+  margin: 0%;
+}

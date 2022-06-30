@@ -13,9 +13,12 @@ const MaxFallSpeed = 20;
 
 class Player {
   constructor({ x = 0, y = 0, width = 50, height = 60, color = "#f0f" }) {
-    this.pos = {};
-    this.pos.x = x;
-    this.pos.y = y;
+    this.pos = {
+      x:x,
+      y:y
+    };
+    // this.pos.x = x;
+    // this.pos.y = y;
     this.vel = { vx: 0, vy: 3 };
     this.width = width;
     this.height = height;
@@ -132,7 +135,13 @@ function animate() {
     Platform.DrawPlatform();
   });
   man.update();
-  shade.update();
+  shade.DrawPlayer();
+  const px = man.pos.x;
+  const py = man.pos.y;
+  setTimeout(() => {
+    shade.pos.x = px;
+    shade.pos.y = py
+  }, 500);
   const MaxRightCor = 300;
   const MaxLeftCor = 30;
   // scroll properties detection

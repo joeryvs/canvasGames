@@ -21,9 +21,12 @@ function main() {
 }
 
 function Draw() {
-  setTimeout(Draw, 200);
-
+  // setTimeout(Draw, 200);
+  requestAnimationFrame(Draw);
   // can.clearRect(0, 0, canvv.width, canvv.height);
+  if (Math.sqrt(count) % 3 == 0) {
+    can.clearRect(0, 0, canvv.width, canvv.height);
+  }
   count++;
   can.fillStyle = colours[count % colours.length];
   conWay.NextGen().artLife();
@@ -44,6 +47,8 @@ canvv.addEventListener("dblclick", () => {
   conWay.ToNewArena();
   count = 0;
 });
+
+window.addEventListener("beforeprint", () => {});
 
 function colors(amount) {
   let co = [];

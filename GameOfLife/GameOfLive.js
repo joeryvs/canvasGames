@@ -39,6 +39,9 @@ function scoreUpdate(input) {
   score.innerHTML = input.toString() + "   generations";
 }
 
+canvv.addEventListener("dblclick", ()=>{
+  conWay.ToNewArena()
+})
 
 function colors(amount) {
   let co = []

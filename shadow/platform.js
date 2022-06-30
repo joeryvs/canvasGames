@@ -12,12 +12,14 @@ let scrollOffset = 0;
 const MaxFallSpeed = 20;
 
 class Player {
-  constructor({ pos = { x: 0, y: 0 }, width = 50, height = 60 }) {
-    this.pos = pos;
+  constructor({ x = 0, y = 0, width = 50, height = 60, color = "#f0f" }) {
+    this.pos = {};
+    this.pos.x = x;
+    this.pos.y = y;
     this.vel = { vx: 0, vy: 3 };
     this.width = width;
     this.height = height;
-    this.color = "#f0f";
+    this.color = color;
     this.isGrounded = false;
     this.isFacingRight = true;
   }
@@ -50,7 +52,7 @@ class Player {
     const brownPipeX = this.isFacingRight ? px + 0.5 * pW : px + 0.0 * pW;
     can.fillRect(brownPipeX, py + 0.7 * Ph, 0.5 * pW, 0.3 * Ph);
   }
-  
+
   update() {
     this.DrawPlayer();
     this.pos.x += this.vel.vx;
@@ -61,15 +63,15 @@ class Player {
     } else {
       this.vel.vy = MaxFallSpeed;
     }
-    if (man.isGrounded && keysss.w.pressed) man.vel.vy = -15;
+    if (this.isGrounded && keysss.w.pressed) this.vel.vy = -15;
     if (this.vel.vy > 7 || this.vel.vy < -7) this.isGrounded = false;
 
     if (keysss.a.pressed) {
-      man.vel.vx -= accelerate;
+      this.vel.vx -= accelerate;
       this.isFacingRight = false;
     }
     if (keysss.d.pressed) {
-      man.vel.vx += accelerate;
+      this.vel.vx += accelerate;
       this.isFacingRight = true;
     }
     this.vel.vx *= friction;
@@ -102,7 +104,8 @@ class Platform {
     return this;
   }
 }
-const man = new Player({ pos: { x: 50, y: 50 }, width: 50, height: 80 });
+const man = new Player({ x: 50, y: 50, width: 50, height: 80 });
+const shade = new Player({ x: 500, y: 50, width: 50, height: 80,color : "#288" });
 
 const platforms = [
   new Platform({
@@ -129,7 +132,7 @@ function animate() {
     Platform.DrawPlatform();
   });
   man.update();
-
+  shade.update();
   const MaxRightCor = 300;
   const MaxLeftCor = 30;
   // scroll properties detection
@@ -161,12 +164,10 @@ const keysss = {
 window.addEventListener("keydown", (ev) => {
   keyPress(ev.key.toLowerCase());
 });
-
 window.addEventListener("keyup", (ev) => {
   keyUP(ev.key.toLowerCase());
 });
 function keyPress(button) {
-  console.log(button);
   switch (button) {
     case "a":
     case "arrowleft":

@@ -25,8 +25,13 @@ function timeShow() {
     const qw = TransForm2(diff);
     const str = `nog ${qw.dagen} dagen en ${qw.uur} uur en ${qw.minuten} minuten en ${qw.seconds} seconden`;
     p1.innerText = str;
+    p2.innerText = "En dan is het   "+ x.value;
   } else {
     p1.innerText = "dat Moment is in het verleden";
+    const qw = TransForm2(-diff)
+    p1.innerText = "Het is"
+    const str = `${qw.dagen} dagen en ${qw.uur} uur en ${qw.minuten} minuten en ${qw.seconds} seconden geleden`;
+    p2.innerText = str
   }
 }
 

@@ -5,7 +5,7 @@ const p1 = p[0];
 const p2 = p[1];
 
 console.log(p);
-const begin = Date.UTC(2022, 8, 4, 8);
+const begin = Date.UTC(2022, 8, 5,8);
 console.log(begin);
 timeShow();
 setInterval(timeShow, 100);

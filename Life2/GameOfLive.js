@@ -17,12 +17,13 @@ let count = 0;
 function main() {
   console.log("succes");
   conWay.ToNewArena();
-  setTimeout(Draw, 1000);
+  setTimeout(Draw, 200);
   return;
 }
 
 function Draw() {
   setTimeout(Draw, 200);
+
   can.clearRect(0, 0, canvv.width, canvv.height);
   count++
   can.fillStyle = col.value;

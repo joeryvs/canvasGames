@@ -16,17 +16,19 @@ let count = 0;
 function main() {
   console.log("succes");
   conWay.ToNewArena();
-  setTimeout(Draw, 1000);
+  setTimeout(Draw, 200);
   return;
 }
 
 function Draw() {
   // setTimeout(Draw, 200);
   requestAnimationFrame(Draw);
+  can.fillStyle = "#ffffff0a";
+  can.fillRect(0, 0, canvv.width, canvv.height);
   // can.clearRect(0, 0, canvv.width, canvv.height);
-  if (Math.sqrt(count) % 3 == 0) {
-    can.clearRect(0, 0, canvv.width, canvv.height);
-  }
+  // if (Math.sqrt(count) % 3 == 0) {
+  //   can.clearRect(0, 0, canvv.width, canvv.height);
+  // }
   count++;
   can.fillStyle = colours[count % colours.length];
   conWay.NextGen().artLife();

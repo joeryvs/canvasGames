@@ -16,7 +16,7 @@ let count = 0;
 function main() {
   console.log("succes");
   conWay.ToNewArena();
-  setTimeout(Draw, 1000);
+  setTimeout(Draw, 250);
   return;
 }
 

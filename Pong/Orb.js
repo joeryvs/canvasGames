@@ -12,8 +12,8 @@ class Orb {
       x: random.PosOrMinusRange(5),
       y: random.PosOrMinusRange(5),
     };
-    this.angle = Math.random() * 2*Math.PI;
-    this.speed = random.range(3) + 2;
+    this.angle = 1;
+    this.speed = 5;
     this.trueColor = random.rFull();
     this.color = this.trueColor;
   }
@@ -30,31 +30,27 @@ class Orb {
   }
   update() {
     this.Draw();
-
     this.vel.x = Math.sin(this.angle) * this.speed;
     this.vel.y = Math.cos(this.angle) * this.speed;
+
     this.pos.x += this.vel.x;
     this.pos.y += this.vel.y;
     // this.vel.y += gravity
-    if (this.pos.y + this.radius >= canvas.height || this.pos.y <= this.radius)
-    this.angle = Math.PI - this.angle;
-      // this.vel.y *= -1;
+    
+    if (this.pos.y + this.radius >= canvas.height) this.angle = (Math.PI)-this.angle ;
+    if (this.pos.y <= this.radius) this.angle = (Math.PI)-this.angle;
 
-    if (this.pos.x + this.radius >= canvas.width || this.pos.x <= this.radius)
-    this.angle *= -1;
-      // this.vel.x *= -1;
+    if (this.collision()) this.angle *= -1;
+      
+    if (this.pos.x + this.radius >= canvas.width) this.angle *=-1;
+    if (this.pos.x <= this.radius) this.angle *=-1;
   }
   type() {
     return Orb;
   }
 
   isTouchingObject(ojb) {
-    if (ojb.type() === Orb) {
-      const DX = this.pos.x - ojb.pos.x;
-      const DY = this.pos.y - ojb.pos.y;
-      return Math.hypot(DX, DY) <= this.radius + ojb.radius;
-    }
-    if (ojb.type() === Cube) {
+    if (ojb.type() === Shield) {
       const hor =
         ojb.pos.x <= this.pos.x + this.radius &&
         ojb.pos.x + ojb.width >= this.pos.x - this.radius &&
@@ -86,11 +82,8 @@ class Orb {
   }
 
   collision() {
-    for (const orb of orbs)
-      if (this.isTouchingObject(orb))
-        if (!(this.pos.x === orb.pos.x && this.pos.y === this.pos.y))
-          return true;
-    for (const cube of cubes) if (this.isTouchingObject(cube)) return true;
+    
+    for (const cube of Schilden) if (this.isTouchingObject(cube)) return true;
     return false;
   }
 }
@@ -100,7 +93,7 @@ function isTouchingObject(orb2) {
     const DX = ojbect1.pos.x - ssss2.pos.x;
     const DY = ojbect1.pos.y - ssss2.pos.y;
     return Math.hypot(DX, DY) <= ojbect1.radius + ssss2.radius;
-  } else if (ojbect1.type() === Orb && ssss2.type() === Cube) {
+  } else if (ojbect1.type() === Orb && ssss2.type() === Shield) {
     const hor =
       ssss2.pos.x <= ojbect1.pos.x + ojbect1.radius &&
       ssss2.pos.x + ssss2.width >= ojbect1.pos.x - ojbect1.radius &&

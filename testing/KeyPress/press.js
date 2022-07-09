@@ -6,15 +6,15 @@ setInterval(() => {
 }, 2000);
 
 window.addEventListener("keydown", (ev) => {
-  keyDown(ev.key);
+  keyDown(ev.key.toLowerCase());
 });
 window.addEventListener("keyup", (ev) => {
-  keyUp(ev.key);
+  keyUp(ev.key.toLowerCase());
 });
 
 function keyDown(burron) {
-  let low;
   try {
+    console.log(burron);
     low = burron.toLowerCase();
     keys[low] = {};
     keys[low].pressed = true;
@@ -28,6 +28,7 @@ function keyDown(burron) {
 
 function keyUp(burron) {
   try {
+    console.log(burron);
     const low = burron.toLowerCase();
     keys[low].pressed = false;
     document.getElementById(low).style.color = "#00ff00";

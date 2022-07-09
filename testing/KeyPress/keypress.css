@@ -6,8 +6,7 @@ p.letters{
 }
 
 p.letters:hover{
-    color: transparent;
-    background-color: transparent;
+    opacity: 0.2;
 }
 span{
     display: flex;
@@ -16,6 +15,20 @@ span{
     top: 40%;
     left: 20%;
     right: 20%;
+    bottom: 20%;
     align-items: stretch;
     justify-content: center;
+}
+
+#spann{
+    display: flex;
+    position: fixed;
+    /* top: 40%; */
+    /* left: 20%;
+    right: 20%; */
+    bottom: 20%;
+    max-width: 900px;
+    align-items: stretch;
+    justify-content: center;
+    flex-wrap: wrap;
 }

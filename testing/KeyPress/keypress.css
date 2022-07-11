@@ -1,26 +1,14 @@
 p.letters{
     color: rgb(0, 0, 255);
-    /* margin: 0%; */
     margin: 4mm;
-    /* color: transparent; */
 }
 
 p.letters:hover{
     opacity: 0.2;
 }
-span{
-    display: flex;
 
-    position: fixed;
-    top: 40%;
-    left: 20%;
-    right: 20%;
-    bottom: 20%;
-    align-items: stretch;
-    justify-content: center;
-}
 
-#spann{
+#spann, span{
     display: flex;
     position: fixed;
     /* top: 40%; */

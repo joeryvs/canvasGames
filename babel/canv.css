@@ -1,0 +1,51 @@
+canvas {
+  border-width: 5px;
+  border-color: red;
+  border-style: dashed;
+  background-color: aqua;
+  margin: 10px;
+}
+
+body {
+  color: white;
+  background-color: black;
+}
+
+div#Container {
+  background-color: blueviolet;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-end;
+  justify-content: space-around;
+  align-items: baseline;
+}
+
+div.knoppen {
+  background-color: aquamarine;
+  min-height: 100px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: space-between;
+  justify-content: space-evenly;
+  align-items: flex-end;
+}
+
+button {
+  background-color: brown;
+  color: #fff;
+  min-width: 150px;
+  max-width: 400px;
+  min-height: 80px;
+  font-size: xx-large;
+  font-family: "Times New Roman", Times, serif;
+  border: 2mm;
+  margin-top: 5mm;
+  margin-bottom: 5mm;
+}
+
+button:hover{
+    background-color: rgba(35, 10, 10, 0);
+    color: rgba(0, 0, 0, 0.637);
+    font-weight: 900;
+}

@@ -22,6 +22,8 @@ const sortedTimes = realTimes.sort((a, b) => a - b);
 console.log(sortedTimes);
 const begin = sortedTimes[0];
 
+
+
 console.log(begin);
 timeShow();
 setInterval(timeShow, 100);

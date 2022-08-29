@@ -23,9 +23,13 @@ p {
   color: brown;
 }
 
-.noCursor{
+.noCursor {
   cursor: none;
 }
-.noMarg{
+.noMarg {
   margin: 0%;
+}
+
+.Hidden {
+  display: none;
 }

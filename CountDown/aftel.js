@@ -8,14 +8,15 @@ const p2 = p[1];
 
 console.log(p);
 const times = [
-  new Date("2022-5-09T08:00"),
-  new Date("2022-08-10T09:00"),
-  new Date("2022-08-10T09:00"),
-  new Date("2022-08-10T09:00"),
-  new Date("2022-08-10T09:00"),
+  new Date("2022-10-23T23:00"),
+  new Date("2022-10-21T13:30"),
+  new Date("2022-10-17T09:00"),
   new Date("2022-10-03T09:00"),
-  new Date("2022-09-28T17:00"),
-  new Date("2022-09-26T09:00"),
+  new Date("2022-10-10T09:00"),
+  new Date("2022-10-11T17:00"),
+  new Date("2022-10-31T23:00"),
+  new Date("2022-11-08T17:00"),
+  new Date("2022-11-14T09:00"),
 ];
 const realTimes = times.filter((val, ind, arr) => {
   return val > new Date();

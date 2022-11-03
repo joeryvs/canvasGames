@@ -1,0 +1,24 @@
+body {
+  color: blue;
+  background-color: yellow;
+  display: flex;
+  align-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+
+canvas {
+  background-color: #fff;
+  margin: 3mm;
+  border: 2mm;
+  border-color: rebeccapurple;
+  border-style: double;
+}
+
+p{
+  font: optional;
+  font-size: x-large;
+  margin-top: auto;
+  font-family: fantasy;
+  color:brown;
+}

@@ -1,45 +1,41 @@
 window.onload = main;
 
-const gokkans = document.querySelector("#gokkans");
-const points = document.querySelector("#points");
-const maxPoints = document.querySelector("#maxPoints");
-const hallmark = document.querySelector("#hallmark");
+const gokkans = document.querySelector("input#gokkans");
+const points = document.querySelector("input#points");
+const maxPoints = document.querySelector("input#maxPoints");
+const hallmark = document.querySelector("input#hallmark");
 
-// console.log(gokkans);
-// console.log(gokkans,points,maxPoints,hallmark);
+for (const inputt of document.querySelectorAll("input")) {
+  inputt.onchange = UpdateVar;
+}
 
+let mp, theHallMark, geusscorrect;
 
-let mp,  theHallMark, geusscorrect;
-
-const canvv1 = document.querySelector("canvas#main");
-const canvv2 = document.querySelector("canvas#extra");
-
-const height = canvv1.height;
-const width = canvv1.width;
-
-canvv2.height = height;
-canvv2.width = width;
+const allCanvas = document.querySelectorAll("canvas");
+const canvv1 = allCanvas[0];
+const canvv2 = allCanvas[1];
 
 const canExtra = canvv2.getContext("2d");
 const pop = canvv1.getContext("2d");
 
-
-
 console.log(canvv2);
 
 // const art = canvas.getContext("2d");
-canExtra.textAlign = "center";
-canExtra.font = "100px sans-serif";
+
 console.log(maxPoints);
-const ActualVal = new CijferBerekenen({points:0,maxPoints: mp,gokkans: geusscorrect, hallmark:theHallMark});
-function Draw(cans = canExtra, { height, width }) {
-  let b = ActualVal.cijfer();
-  cans.clearRect(0, 0, canvv1.width, canvv1.height);
-  cans.fillText(b, width * 0.5, height * 0.5, height);
+const ActualVal = new CijferBerekenen({});
+
+function Draw(cans = canvv2) {
+  const art = cans.getContext("2d");
+  art.clearRect(0, 0, cans.width, cans.height);
+  art.textAlign = "center";
+  art.font = "100px sans-serif";
+  const output = Math.round(ActualVal.cijfer() * 1000) / 100;
+  art.fillText(output, cans.width * 0.5, cans.height * 0.5, cans.height);
 }
 
-function DrawGraph( canv = canvv1 , {}) {
-  const pop = canvv1.getContext("2d");
+function DrawGraph(canv = canvv1) {
+  const pop = canv.getContext("2d");
   const r = [];
   for (let i = 0; i < mp; i += 0.25) {
     const inf = {
@@ -48,10 +44,10 @@ function DrawGraph( canv = canvv1 , {}) {
       gokkans: geusscorrect,
       hallmark: theHallMark,
     };
-    const cijf = new CijferBerekenen(inf);
-    r.push(cijf);
+    // const cijf = new CijferBerekenen(inf);
+    r.push(new CijferBerekenen(inf));
   }
-  pop.clearRect(0, 0, canvv1.width, canvv2.height);
+  pop.clearRect(0, 0, canv.width, canv.height);
   pop.beginPath();
   for (const Cijfer of r) {
     const t = Cijfer.canvasCors(canvv1);
@@ -59,6 +55,10 @@ function DrawGraph( canv = canvv1 , {}) {
   }
   pop.stroke();
   pop.closePath();
+  const ter = ActualVal.canvasCors(canv);
+  ter.r = 5;
+  ter.color = "red";
+  smallCircle(pop, ter);
 }
 
 function UpdateVar() {
@@ -70,18 +70,28 @@ function UpdateVar() {
   ActualVal.punten = currentpoint;
   ActualVal.maxPoints = mp;
   ActualVal.gokkans = geusscorrect;
-  ActualVal.hallmark= theHallMark
-  DrawGraph(canvv2, {});
-  Draw(canExtra, canvv2);
+  ActualVal.hallmark = theHallMark;
+  DrawGraph(canvv1);
+  Draw(canvv2);
 }
 function main() {
   console.log("succes");
+
   UpdateVar();
 
   return;
 }
 
-for (const inputt of document.querySelectorAll("input")) {
-  console.log(inputt);
-  inputt.onchange = UpdateVar
+function smallCircle(
+  canvass = canvv1.getContext("2d"),
+  { x = 0, y = 0, r = 3, color = "red" }
+) {
+  const storage = canvass.fillStyle;
+  canvass.fillStyle = color;
+  canvass.beginPath();
+  canvass.arc(x, y, r, 0, Math.PI * 2);
+  canvass.fill();
+  canvass.closePath();
+  canvass.fillStyle = storage;
+  return;
 }

@@ -7,7 +7,6 @@
     <title>Cijfer Berekenen</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
-    <script defer src="object.js"></script>
     <script defer src="cijfer.js"></script>
     <script defer src="index.js"></script>
   </head>
@@ -18,13 +17,54 @@
       <canvas id="extra" width="400" height="400"></canvas>
     </div>
     <span
-      ><p id="uitleg">
+      ><p>
         Links is een grafiek<br />
         rechts is het cijfer<br /></p
     ></span>
-    <input type="number" value="90" min="0" max=""  name="points" id="points">
-    <input type="number" value="100" min="0" name="maxPoints" id="maxPoints">
-    <input type="number" value="5" name="gokkans" id="gokkans" , min="0" , step="0.25">
-    <input type="number" min="0" max="100" value="55" name="hallmark" id="hallmark">
+    <div>
+      <div>
+        punten
+        <input
+          type="number"
+          value="90"
+          min="0"
+          max=""
+          name="points"
+          id="points"
+        />
+      </div>
+      <div>
+        maximale punten
+        <input
+          type="number"
+          value="100"
+          min="0"
+          name="maxPoints"
+          id="maxPoints"
+        />
+      </div>
+      <div>
+        de gokkans
+        <input
+          type="number"
+          value="5"
+          name="gokkans"
+          id="gokkans"
+          min="0"
+          step="0.25"
+        />
+      </div>
+      <div>
+        percentage nodig op 55 procent te halen
+        <input
+          type="number"
+          min="10"
+          max="55"
+          value="50"
+          name="hallmark"
+          id="hallmark"
+        />
+      </div>
+    </div>
   </body>
 </html>

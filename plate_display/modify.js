@@ -1,9 +1,12 @@
 
+/**
+ * Root element
+ * @type {HTMLElement}
+ */
 const r = document.querySelector(':root');
-const heightSet = document.querySelector("input#height");
 
 /**
- * 
+ * Change a CSS Variable on a change event
  * @param {keyof HTMLElementTagNameMap} selectors
  * @param {string} cssVariable 
  */
@@ -13,19 +16,11 @@ function set_value_property(selectors,cssVariable) {
         val.addEventListener("change",function (ev) {
             r.style.setProperty(cssVariable,this.value + "cm");
         })
+        // set default
+        r.style.setProperty(cssVariable,val.value + "cm");
     }
 }
+// change the variables
 set_value_property("input#height","--plate-height");
 set_value_property("input#width","--plate-width");
 
-
-// if (heightSet){
-//     heightSet.addEventListener("change" ,(function (ev) {
-//         console.log(ev);
-//         console.log(this);  
-//         console.log(this.value)
-//         r.style.setProperty("--plate-width",this.value + "cm");
-
-//     }))
-// }
-// console.log(heightSet);

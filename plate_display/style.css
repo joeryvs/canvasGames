@@ -1,0 +1,9 @@
+:root {
+    --plate-width: 4cm;
+    --plate-height: 6cm;
+}
+
+canvas#plate {
+    width: var(--plate-width);
+    height: var(--plate-height);
+}

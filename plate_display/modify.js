@@ -2,18 +2,22 @@
 const r = document.querySelector(':root');
 const heightSet = document.querySelector("input#height");
 
-
-function SetValueProperty(querySelect,cssVariable) {
-    const val = document.querySelector(querySelect);
+/**
+ * 
+ * @param {keyof HTMLElementTagNameMap} selectors
+ * @param {string} cssVariable 
+ */
+function set_value_property(selectors,cssVariable) {
+    const val = document.querySelector(selectors=selectors);
     if (val) {
         val.addEventListener("change",function (ev) {
             r.style.setProperty(cssVariable,this.value + "cm");
         })
     }
 }
+set_value_property("input#height","--plate-height");
+set_value_property("input#width","--plate-width");
 
-SetValueProperty("input#height","--plate-height");
-SetValueProperty("input#width","--plate-width");
 
 // if (heightSet){
 //     heightSet.addEventListener("change" ,(function (ev) {
